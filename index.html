@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Perper & Associates — Enterprise Resilience, Crisis Management, Emergency Management and Business Continuity consulting for corporations and large organizations." />
+  <meta name="keywords" content="enterprise resilience, crisis management, emergency management, business continuity, disaster recovery, training exercises, organizational resilience" />
+  <title>Perper & Associates | Enterprise Resilience & Crisis Management</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #0B1929;
+      --navy-mid:  #122240;
+      --navy-light:#1B3460;
+      --gold:      #C8952A;
+      --gold-light:#E8B84B;
+      --white:     #FFFFFF;
+      --grey-100:  #F4F6F9;
+      --grey-300:  #C8D0DC;
+      --grey-500:  #7A8A9E;
+      --text:      #0B1929;
+      --radius:    6px;
+      --shadow:    0 4px 24px rgba(11,25,41,0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(11, 25, 41, 0.97);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      border-bottom: 1px solid rgba(200, 149, 42, 0.25);
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .nav-brand .name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-brand .tagline {
+      font-size: 0.62rem;
+      color: var(--gold);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--grey-300);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: var(--radius);
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(160deg, rgba(11,25,41,0.92) 40%, rgba(27,52,96,0.80) 100%),
+        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 10rem 5% 6rem;
+    }
+
+    .hero-inner {
+      max-width: 760px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(200,149,42,0.12);
+      border: 1px solid rgba(200,149,42,0.35);
+      padding: 0.3rem 0.9rem;
+      border-radius: 2rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--grey-300);
+      max-width: 580px;
+      margin-bottom: 2.4rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.35);
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--navy-mid);
+      padding: 2.4rem 5%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .stat {
+      text-align: center;
+      padding: 0.6rem 0;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--grey-300);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.35rem;
+    }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 6rem 5%; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title.light { color: var(--white); }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--grey-500);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .section-subtitle.light { color: var(--grey-300); }
+
+    /* ── ABOUT ── */
+    .about { background: var(--grey-100); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-text p {
+      color: #3A4A5E;
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .about-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+    }
+
+    .about-feature .icon {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.1rem;
+    }
+
+    .about-feature .icon svg { width: 14px; height: 14px; fill: var(--navy); }
+
+    .about-feature p {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .about-card {
+      background: var(--navy);
+      border-radius: 10px;
+      padding: 3rem 2.5rem;
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .about-card .quote {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--grey-300);
+      font-style: italic;
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--gold);
+      padding-left: 1.2rem;
+    }
+
+    .about-card .attribution {
+      font-size: 0.82rem;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--navy); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 2.2rem 2rem;
+      transition: border-color 0.25s, transform 0.2s, background 0.25s;
+    }
+
+    .service-card:hover {
+      border-color: var(--gold);
+      background: rgba(200,149,42,0.06);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(200,149,42,0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .service-icon svg { width: 26px; height: 26px; stroke: var(--gold); fill: none; stroke-width: 1.8; }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.02em;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--grey-300);
+      line-height: 1.75;
+    }
+
+    .service-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(200,149,42,0.12);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2rem;
+      margin-top: 1rem;
+    }
+
+    .service-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1rem;
+    }
+
+    .service-list li {
+      font-size: 0.87rem;
+      color: var(--grey-300);
+      padding: 0.38rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.4;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .service-list li:last-child { border-bottom: none; }
+
+    .service-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* ── WHY US ── */
+    .why-us { background: var(--white); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .differentiator {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .diff-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+      min-width: 48px;
+    }
+
+    .diff-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .diff-content p {
+      font-size: 0.9rem;
+      color: var(--grey-500);
+      line-height: 1.75;
+    }
+
+    .credentials-box {
+      background: var(--navy);
+      border-radius: 10px;
+      padding: 2.5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .cred-item {
+      text-align: center;
+      padding: 1rem;
+      border: 1px solid rgba(200,149,42,0.2);
+      border-radius: 8px;
+    }
+
+    .cred-item .cred-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .cred-item .cred-body {
+      font-size: 0.85rem;
+      color: var(--grey-300);
+      line-height: 1.5;
+    }
+
+    /* ── CASE STUDIES ── */
+    .case-studies { background: var(--grey-100); }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .case-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s;
+    }
+
+    .case-card:hover { transform: translateY(-4px); }
+
+    .case-header {
+      background: var(--navy-mid);
+      padding: 1.5rem 1.8rem;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .case-header .case-type {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .case-header h3 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.35;
+    }
+
+    .case-body {
+      padding: 1.5rem 1.8rem;
+    }
+
+    .case-body p {
+      font-size: 0.88rem;
+      color: #4A5A6E;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .case-outcome {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: rgba(200,149,42,0.1);
+      border-left: 3px solid var(--gold);
+      padding: 0.5rem 0.8rem;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* ── CLIENTS ── */
+    .clients { background: var(--white); }
+
+    .clients-intro {
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--grey-300);
+      border: 1px solid var(--grey-300);
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 1100px;
+    }
+
+    .client-item {
+      background: var(--white);
+      padding: 1.4rem 1rem;
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.35;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .client-item:hover {
+      background: var(--navy);
+      color: var(--gold);
+    }
+
+    /* ── PROCESS ── */
+    .process { background: var(--navy-mid); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: rgba(200,149,42,0.3);
+      z-index: 0;
+    }
+
+    .process-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--navy);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .process-step h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .process-step p {
+      font-size: 0.82rem;
+      color: var(--grey-300);
+      line-height: 1.65;
+    }
+
+    /* ── TESTIMONIAL ── */
+    .testimonial {
+      background: var(--gold);
+      padding: 5rem 5%;
+      text-align: center;
+    }
+
+    .testimonial blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      color: var(--navy);
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.5;
+    }
+
+    .testimonial cite {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(11,25,41,0.7);
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--navy); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info p {
+      color: var(--grey-300);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-detail .cd-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(200,149,42,0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+    }
+
+    .contact-detail .cd-icon svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.8; }
+
+    .contact-detail a,
+    .contact-detail span {
+      font-size: 0.92rem;
+      color: var(--grey-300);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-detail a:hover { color: var(--gold); }
+
+    .contact-form {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 2.5rem 2rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--grey-300);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--grey-500); }
+
+    .form-group select option { background: var(--navy); color: var(--white); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.95rem;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover { background: var(--gold-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060F1A;
+      padding: 3rem 5% 2rem;
+      border-top: 1px solid rgba(200,149,42,0.2);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand .name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .footer-brand .tagline {
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-col h5 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey-300);
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--grey-500);
+      text-decoration: none;
+      margin-bottom: 0.4rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: var(--grey-500);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .social-link:hover { background: rgba(200,149,42,0.25); }
+
+    .social-link svg { width: 16px; height: 16px; fill: var(--grey-300); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .stats-strip       { grid-template-columns: repeat(2, 1fr); }
+      .services-grid     { grid-template-columns: 1fr !important; }
+      .cases-grid        { grid-template-columns: 1fr 1fr; }
+      .about-grid        { grid-template-columns: 1fr; gap: 2.5rem; }
+      .why-grid          { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-grid      { grid-template-columns: 1fr; gap: 2.5rem; }
+      .process-steps     { grid-template-columns: repeat(2, 1fr); }
+      .process-steps::before { display: none; }
+      .clients-grid      { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 4%; }
+      .nav-links         { display: none; }
+      .hero              { padding: 8rem 4% 5rem; }
+      section            { padding: 4rem 4%; }
+      .stats-strip       { grid-template-columns: 1fr 1fr; padding: 2rem 4%; }
+      .services-grid     { grid-template-columns: 1fr; }
+      .cases-grid        { grid-template-columns: 1fr; }
+      .process-steps     { grid-template-columns: 1fr; }
+      .clients-grid      { grid-template-columns: 1fr 1fr; }
+      .form-row          { grid-template-columns: 1fr; }
+      .about-features    { grid-template-columns: 1fr; }
+      .credentials-box   { grid-template-columns: 1fr; }
+      .footer-links      { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-brand">
+    <span class="name">Perper &amp; Associates</span>
+    <span class="tagline">Operational Resilience Consulting</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#work">Our Work</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Resilience. Continuity. Crisis Leadership.</span>
+    <h1>We Help Organizations<br><span>Remain Operational</span><br>Through Disruption.</h1>
+    <p>Perper &amp; Associates partners with corporations, healthcare systems, government agencies and critical infrastructure organizations to build resilient systems, capable leaders and sustainable programs that hold under pressure.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Schedule a Consultation</a>
+      <a href="#services" class="btn-outline">Explore Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ─────────────────────────────────────────────────────── -->
+<div class="stats-strip">
+  <div class="stat">
+    <span class="stat-number">25+</span>
+    <span class="stat-label">Years of Experience</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">100+</span>
+    <span class="stat-label">Engagements Delivered</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">50+</span>
+    <span class="stat-label">Client Organizations</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">National</span>
+    <span class="stat-label">Reach &amp; Deployment</span>
+  </div>
+</div>
+
+<!-- ── ABOUT ─────────────────────────────────────────────────────── -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <p class="section-label">Who We Are</p>
+      <h2 class="section-title">Built for the Moments That Matter Most</h2>
+      <p>Perper &amp; Associates is a national resilience and crisis management consulting firm. For over 25 years, we have helped organizations across healthcare, government, public safety and critical infrastructure build the programs, plans and leadership capabilities they need to stay operational under pressure.</p>
+      <p>Our approach is always practical. We design resilience programs that integrate across your organization, not plans that live in a binder. Led by a practitioner with roots in financial services, public safety and inclusive leadership, we work with diverse teams and complex environments to deliver results that last.</p>
+
+      <div style="margin-top:2rem; display:grid; gap:1.2rem;">
+        <div style="border-left:3px solid var(--gold); padding-left:1rem;">
+          <p style="font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--navy); margin-bottom:0.3rem;">Our Mission</p>
+          <p style="font-size:0.92rem; color:#3A4A5E; line-height:1.75; margin:0;">To help organizations build resilient systems, capable leaders and sustainable programs that support operational continuity before, during and after crisis.</p>
+        </div>
+        <div style="border-left:3px solid var(--gold); padding-left:1rem;">
+          <p style="font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--navy); margin-bottom:0.3rem;">Our Vision</p>
+          <p style="font-size:0.92rem; color:#3A4A5E; line-height:1.75; margin:0;">To be a trusted advisor in resilience, continuity and crisis leadership across healthcare, government, public safety and critical infrastructure sectors.</p>
+        </div>
+      </div>
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="icon">
+            <svg viewBox="0 0 16 16"><path d="M8 1l2 4 5 .7-3.5 3.4.8 5L8 12l-4.3 2.1.8-5L1 5.7l5-.7z"/></svg>
+          </div>
+          <p>Nationally Recognized Expertise</p>
+        </div>
+        <div class="about-feature">
+          <div class="icon">
+            <svg viewBox="0 0 16 16"><path d="M8 1l2 4 5 .7-3.5 3.4.8 5L8 12l-4.3 2.1.8-5L1 5.7l5-.7z"/></svg>
+          </div>
+          <p>ICS/NIMS Certified Practitioners</p>
+        </div>
+        <div class="about-feature">
+          <div class="icon">
+            <svg viewBox="0 0 16 16"><path d="M8 1l2 4 5 .7-3.5 3.4.8 5L8 12l-4.3 2.1.8-5L1 5.7l5-.7z"/></svg>
+          </div>
+          <p>Inclusive &amp; Equity-Forward Approach</p>
+        </div>
+        <div class="about-feature">
+          <div class="icon">
+            <svg viewBox="0 0 16 16"><path d="M8 1l2 4 5 .7-3.5 3.4.8 5L8 12l-4.3 2.1.8-5L1 5.7l5-.7z"/></svg>
+          </div>
+          <p>Customized to Your Organization</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-card">
+      <p class="quote">"Perper &amp; Associates was an asset to our institution. Reliable, trustworthy and a comforting support beam. Their instructors were well informed, patient and great communicators."</p>
+      <p class="attribution">Vice President, Safety &amp; Security<br>Fortune 1000 Manufacturing Company</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ──────────────────────────────────────────────────── -->
+<section class="services" id="services">
+  <div style="max-width:1100px; margin:0 auto;">
+    <p class="section-label" style="color:var(--gold);">What We Do</p>
+    <h2 class="section-title light">Our Core Services</h2>
+    <p class="section-subtitle light">From strategic frameworks to hands-on implementation, we cover the full resilience lifecycle for your organization.</p>
+  </div>
+  <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Enterprise Resilience</h3>
+      <p style="margin-bottom:1.2rem;">Organizations require more than emergency plans. They need integrated resilience programs that support long-term sustainability and operational effectiveness.</p>
+      <ul class="service-list">
+        <li>Resilience Assessments</li>
+        <li>Resilience Program Development</li>
+        <li>Executive Preparedness</li>
+        <li>Governance and Policy Development</li>
+        <li>Strategic Planning</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>Business Continuity</h3>
+      <p style="margin-bottom:1.2rem;">Helping organizations maintain critical operations during disruption.</p>
+      <ul class="service-list">
+        <li>Business Impact Analysis</li>
+        <li>Continuity Planning</li>
+        <li>Recovery Planning</li>
+        <li>Continuity Program Development</li>
+        <li>Continuity Exercises</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <h3>Crisis Management</h3>
+      <p style="margin-bottom:1.2rem;">Supporting leadership teams before and during high-consequence events.</p>
+      <ul class="service-list">
+        <li>Crisis Management Frameworks</li>
+        <li>Executive Crisis Teams</li>
+        <li>Crisis Communications Planning</li>
+        <li>Leadership Exercises</li>
+        <li>Decision Support Programs</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h3>Emergency Management</h3>
+      <p style="margin-bottom:1.2rem;">Developing comprehensive preparedness and response capabilities.</p>
+      <ul class="service-list">
+        <li>Emergency Operations Plans</li>
+        <li>Hazard Vulnerability Assessments</li>
+        <li>Emergency Operations Centers</li>
+        <li>Incident Command Systems</li>
+        <li>Exercise Design and Evaluation</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── WHY US ─────────────────────────────────────────────────────── -->
+<section class="why-us" id="why-us">
+  <div class="why-grid">
+    <div>
+      <p class="section-label">Why Perper &amp; Associates</p>
+      <h2 class="section-title">What Sets Us Apart</h2>
+      <p class="section-subtitle" style="margin-bottom:2rem;">We are not a generalist firm that dabbles in resilience. Crisis, emergency management and business continuity is all we do — and we bring decades of real-world experience to every engagement.</p>
+
+      <div class="differentiator">
+        <div class="diff-number">01</div>
+        <div class="diff-content">
+          <h4>Practitioner-Led, Not Theory-Driven</h4>
+          <p>Our consultants have managed real incidents, built real plans and trained real teams. We bring field experience, not just frameworks.</p>
+        </div>
+      </div>
+      <div class="differentiator">
+        <div class="diff-number">02</div>
+        <div class="diff-content">
+          <h4>Customized to Your Organization</h4>
+          <p>No copy-paste plans. Every engagement starts with a thorough assessment of your unique risks, culture, people and environment.</p>
+        </div>
+      </div>
+      <div class="differentiator">
+        <div class="diff-number">03</div>
+        <div class="diff-content">
+          <h4>Inclusive by Design</h4>
+          <p>We build plans that account for diverse populations, accessibility needs and equity considerations — because resilience only works when it works for everyone.</p>
+        </div>
+      </div>
+      <div class="differentiator">
+        <div class="diff-number">04</div>
+        <div class="diff-content">
+          <h4>AI-Informed Preparedness</h4>
+          <p>We integrate emerging AI tools and methodologies into training and planning to help your organization stay ahead of evolving threats.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="credentials-box">
+      <div class="cred-item">
+        <p class="cred-title">Framework Expertise</p>
+        <p class="cred-body">ICS, NIMS, FEMA, ISO 22301, NFPA 1600</p>
+      </div>
+      <div class="cred-item">
+        <p class="cred-title">Sectors Served</p>
+        <p class="cred-body">Corporate, Healthcare, Public Safety, Government, Nonprofit</p>
+      </div>
+      <div class="cred-item">
+        <p class="cred-title">Deployment Scope</p>
+        <p class="cred-body">Local, Regional and National Engagements</p>
+      </div>
+      <div class="cred-item">
+        <p class="cred-title">Special Events</p>
+        <p class="cred-body">Mass-gathering incident management for 10,000+ attendee events</p>
+      </div>
+      <div class="cred-item">
+        <p class="cred-title">Pandemic Response</p>
+        <p class="cred-body">COVID-19 ACS operations, ICS mentoring, recovery planning</p>
+      </div>
+      <div class="cred-item">
+        <p class="cred-title">Leadership Dev</p>
+        <p class="cred-body">Executive coaching, crisis leadership and EOC operations</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OUR PROCESS ─────────────────────────────────────────────────── -->
+<section class="process">
+  <div style="max-width:1100px; margin:0 auto;">
+    <p class="section-label" style="color:var(--gold); text-align:center;">How We Work</p>
+    <h2 class="section-title light" style="text-align:center; margin-bottom:0.5rem;">Our Engagement Process</h2>
+    <p class="section-subtitle light" style="text-align:center; max-width:500px; margin:0 auto 3.5rem;">A structured, proven approach that moves you from assessment to operational readiness.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-circle">1</div>
+      <h4>Assess</h4>
+      <p>We conduct a thorough risk and capability assessment to understand your current posture, gaps and priorities.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">2</div>
+      <h4>Design</h4>
+      <p>We build a customized resilience strategy and plan set aligned to your organization, sector and regulatory requirements.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">3</div>
+      <h4>Train</h4>
+      <p>We deliver targeted training programs, tabletop exercises and simulations to build real-world capability in your teams.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">4</div>
+      <h4>Sustain</h4>
+      <p>We provide ongoing coaching, plan maintenance and program reviews so your resilience posture grows stronger over time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CASE STUDIES ───────────────────────────────────────────────── -->
+<section class="case-studies" id="work">
+  <div style="max-width:1100px; margin:0 auto;">
+    <p class="section-label">Our Work</p>
+    <h2 class="section-title">Proven in the Field</h2>
+    <p class="section-subtitle">Real engagements. Real results. A track record built on some of the most demanding scenarios organizations face.</p>
+  </div>
+  <div class="cases-grid">
+
+    <div class="case-card">
+      <div class="case-header">
+        <p class="case-type">Emergency Management</p>
+        <h3>COVID-19 Pandemic Response &amp; Recovery</h3>
+      </div>
+      <div class="case-body">
+        <p>Partnered with Epicenter-Innovation beginning March 2020 to provide ICS training, mentoring and operational planning for Alternate Care Site (ACS) operations across multiple jurisdictions during the global pandemic response.</p>
+        <p>Supported planning and logistics section operations, lessons learned documentation and reopening coordination frameworks for healthcare and community organizations.</p>
+        <div class="case-outcome">Outcome: Operationalized ACS facilities and delivered ICS/NIMS-compliant response structures under real-world crisis conditions.</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-header">
+        <p class="case-type">Business Continuity</p>
+        <h3>Disaster Recovery Plan — AMP Communications</h3>
+      </div>
+      <div class="case-body">
+        <p>Developed a comprehensive Disaster Recovery Plan (DRP) for AMP Communications, consolidating all critical business continuity information into a single, actionable repository.</p>
+        <p>The DRP documented AMP's capacity to withstand disruption and defined clear recovery processes, escalation paths and communication protocols for their leadership and operations teams.</p>
+        <div class="case-outcome">Outcome: Fully documented DRP enabling leadership to manage any disaster scenario with clarity and confidence.</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-header">
+        <p class="case-type">Special Event Management</p>
+        <h3>Harry Potter: Wizards Unite Fan Festival — Indianapolis</h3>
+      </div>
+      <div class="case-body">
+        <p>Developed Medical Operations and Event Incident Management Plans for a 10,000+ attendee special event at White River State Park, Indianapolis. Provided a flexible EMS command framework for Indianapolis EMS Division and Event Medics to operate within.</p>
+        <p>Plans addressed mass casualty response, inter-agency coordination, staging logistics and real-time incident communication across the multi-day event.</p>
+        <div class="case-outcome">Outcome: Safe, well-coordinated event operations with a clear incident management framework across all responding agencies.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CLIENTS ─────────────────────────────────────────────────────── -->
+<section class="clients" id="clients">
+  <div class="clients-intro">
+    <p class="section-label">Our Clients &amp; Affiliates</p>
+    <h2 class="section-title">Trusted By Organizations Across Sectors</h2>
+    <p class="section-subtitle" style="margin-bottom:0;">From Fortune 1000 corporations to public health agencies, our partners represent the depth and breadth of our reach.</p>
+  </div>
+  <div class="clients-grid">
+    <div class="client-item">Quest Diagnostics</div>
+    <div class="client-item">AMP Communications</div>
+    <div class="client-item">Epicenter-Innovations</div>
+    <div class="client-item">Emergency Preparedness Solutions, LLC</div>
+    <div class="client-item">NJ Assoc. of City &amp; County Health Officials</div>
+    <div class="client-item">Health &amp; Safety Associates, LLC</div>
+    <div class="client-item">Emergency Response &amp; Global Security Solutions</div>
+    <div class="client-item">NEMTAC</div>
+    <div class="client-item">Critical Ops</div>
+    <div class="client-item">REMLU Inc.</div>
+    <div class="client-item">Impact-America</div>
+    <div class="client-item">RedPeg Marketing</div>
+    <div class="client-item">Dynamic Productions USA</div>
+    <div class="client-item">Event Medic Services</div>
+    <div class="client-item">Indianapolis EMS Division</div>
+    <div class="client-item">And Growing...</div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIAL ─────────────────────────────────────────────────── -->
+<div class="testimonial">
+  <blockquote>"Perper &amp; Associates was an asset to our institution. Reliable, trustworthy and a comforting support beam. Their instructors were well informed, patient and great communicators."</blockquote>
+  <cite>Vice President, Safety &amp; Security &mdash; Fortune 1000 Manufacturing Company</cite>
+</div>
+
+<!-- ── CONTACT ─────────────────────────────────────────────────────── -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p class="section-label" style="color:var(--gold);">Work With Us</p>
+      <h2 class="section-title light">Let's Talk About Your Organization's Readiness.</h2>
+      <p>Whether you are building a resilience program from the ground up, updating aging plans or navigating an active challenge, we are ready to help. Reach out and let's talk about what your organization needs.</p>
+
+      <div class="contact-detail">
+        <div class="cd-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <a href="mailto:adam@perperassoc.com">adam@perperassoc.com</a>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.9 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        </div>
+        <a href="tel:+18776737737">1 (877) 673-7737</a>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <span>Serving Clients Nationally</span>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3 style="color:var(--white); font-size:1.05rem; font-weight:700; margin-bottom:1.5rem;">Start a Conversation</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Jane" />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Organization</label>
+        <input type="text" placeholder="Your company name" />
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="jane@company.com" />
+      </div>
+      <div class="form-group">
+        <label>Service Interest</label>
+        <select>
+          <option value="">Select a service area...</option>
+          <option>Enterprise Resilience</option>
+          <option>Crisis Management</option>
+          <option>Emergency Management</option>
+          <option>Business Continuity Planning</option>
+          <option>Training &amp; Exercises</option>
+          <option>Implementation Planning</option>
+          <option>General Inquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell Us About Your Challenge</label>
+        <textarea placeholder="Briefly describe what you're working on or trying to solve..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="alert('Thank you! We will be in touch shortly.')">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <p class="name">Perper &amp; Associates</p>
+      <p class="tagline">Operational Resilience Consulting</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="#services">Enterprise Resilience</a>
+        <a href="#services">Crisis Management</a>
+        <a href="#services">Emergency Management</a>
+        <a href="#services">Business Continuity</a>
+        <a href="#services">Training &amp; Exercises</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#about">About Us</a>
+        <a href="#work">Our Work</a>
+        <a href="#clients">Clients</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="mailto:adam@perperassoc.com">adam@perperassoc.com</a>
+        <a href="tel:+18776737737">1 (877) 673-7737</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2012&ndash;2026 Perper &amp; Associates. All rights reserved.</p>
+    <div class="social-links">
+      <a class="social-link" href="https://www.linkedin.com/company/perper-&-associates" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a class="social-link" href="https://twitter.com/PerperAssoc" target="_blank" rel="noopener" aria-label="Twitter / X">
+        <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
